@@ -1,8 +1,7 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+// @flow
+
+// react-native run-android
+// adb reverse tcp:8081 tcp:8081
 
 'use strict';
 
@@ -15,6 +14,9 @@ import {
   View,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+
+var CityWeather = require('./app/cityweather/CityWeather');
+// var DayWeather = require('./app/dayweather/DayWeather');
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -49,27 +51,8 @@ class ChatScreen extends React.Component {
 }
 
 const App = StackNavigator({
-  Home: { screen: HomeScreen },
-  Chat: { screen: ChatScreen },
+  CityWeather: { screen: CityWeather }
+  // DayWeather: { screen: DayWeather },
 });
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#F5FCFF',
-//   },
-//   welcome: {
-//     fontSize: 20,
-//     textAlign: 'center',
-//     margin: 10,
-//   },
-//   instructions: {
-//     textAlign: 'center',
-//     color: '#333333',
-//     marginBottom: 5,
-//   },
-// });
 
 AppRegistry.registerComponent('CityWeather', () => App);
