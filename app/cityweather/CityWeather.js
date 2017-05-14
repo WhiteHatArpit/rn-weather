@@ -30,10 +30,6 @@ function urlForQueryAndPage(city: string, page: number) {
 
 class CityWeather extends Component {
 
-  static navigationOptions = {
-    title: 'Bangalore',
-  };
-
   constructor(props) {
     super(props);
     console.log("CityWeather.props");
@@ -85,8 +81,14 @@ class CityWeather extends Component {
   }
 
   _onDateSelect(rowData) {
-    const { navigate } = this.props.navigation;
-    navigate('DayWeather', { data: rowData});
+    this.props.navigator.push({
+      screen: 'DayWeather',
+      title: rowData.date,
+      passProps: {data: rowData},
+      animated: true
+    });
+    // const { navigate } = this.props.navigation;
+    // navigate('DayWeather', { data: rowData});
   }
 
   renderRow(rowData, sectionID, rowID) {

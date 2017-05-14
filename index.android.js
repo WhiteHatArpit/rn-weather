@@ -5,15 +5,29 @@
 
 'use strict';
 
-import { AppRegistry } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { Navigation } from 'react-native-navigation';
+import { registerScreens } from './app/Screens';
 
-var CityWeather = require('./app/cityweather/CityWeather');
-var DayWeather = require('./app/dayweather/DayWeather');
+registerScreens();
 
-const App = StackNavigator({
-  CityWeather: { screen: CityWeather },
-  DayWeather: { screen: DayWeather },
+const navigatorStyle = {
+	statusBarColor: '#1A237E',
+	statusBarTextColorScheme: 'light',
+	navBarBackgroundColor: '#3F51B5',
+	navBarTextColor: '#FFFFFF',
+  navBarButtonColor: '#FFFFFF'
+};
+
+Navigation.startSingleScreenApp({
+	screen: {
+		screen: 'CityWeather',
+		title: 'Bangalore',
+		navigatorStyle,
+    leftButtons: [
+			{
+				id: 'back'
+			}
+		]
+	},
+  passProps: {}
 });
-
-AppRegistry.registerComponent('CityWeather', () => App);
