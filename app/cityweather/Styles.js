@@ -7,6 +7,13 @@ var styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF'
   },
+  loaderContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    marginBottom: 150
+  },
   message: {
     marginTop: 20,
     marginBottom: 20,

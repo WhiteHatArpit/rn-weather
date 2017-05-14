@@ -10,8 +10,8 @@ import {
   View,
 } from 'react-native';
 
-// var DayWeather = require('../dayweather/DayWeather');
 var styles = require('./Styles');
+var DayWeather = require('../dayweather/DayWeather');
 
 function urlForQueryAndPage(city: string, page: number) {
   var data = {
@@ -74,7 +74,6 @@ class CityWeather extends Component {
   }
 
   _handleResponse(response) {
-    // console.log(response.data.weather);
     var dataSource = new ListView.DataSource(
       {rowHasChanged: (r1, r2) => r1.date !== r2.date});
     this.setState({
@@ -85,14 +84,14 @@ class CityWeather extends Component {
   }
 
   _onDateSelect(rowData) {
-    console.log(rowData.date);
+    const { navigate } = this.props.navigation;
+    navigate('DayWeather', { data: rowData});
   }
 
   renderRow(rowData, sectionID, rowID) {
     var icon = rowData.weatherIconUrl ?
     (<Image style={styles.thumb} source={{ uri: rowData.weatherIconUrl[0].value }} />) :
     (<View/>);
-    console.log(rowData.weatherIconUrl);
     return (
       <TouchableHighlight
           onPress={() => this._onDateSelect(rowData)}
@@ -113,10 +112,10 @@ class CityWeather extends Component {
   }
 
   render() {
-    console.log('CityWeather.render');
-
     var spinner = this.state.isLoading ?
-    (<ActivityIndicator size='large'/>) :
+    (<View style={styles.loaderContainer}>
+      <ActivityIndicator size='large'/>
+    </View>) :
     (<View/>);
 
     var weatherlist = this.state.isLoading ?
