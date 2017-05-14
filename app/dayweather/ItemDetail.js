@@ -16,7 +16,7 @@ class ItemDetail extends Component {
       <View style={styles.itemDetailsContainer}>
         <Text style={styles.itemDetailsText}>{this.props.label}</Text>
         <Text style={styles.itemDetailsText}>{this.props.value}</Text>
-        </View>
+      </View>
     );
   }
 }

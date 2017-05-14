@@ -22,6 +22,7 @@ var styles = StyleSheet.create({
     color: '#656565'
   },
   rowContainer: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10
