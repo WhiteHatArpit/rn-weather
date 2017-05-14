@@ -5,8 +5,5 @@
     <color name="white">#FFFFFF</color>
     <color name="grey">#CCCCCC</color>
     <color name="purple">#3F51B5</color>
-
-    <color name="colorPrimary">@color/white</color>
-    <color name="colorPrimaryDark">@color/grey</color>
-    <color name="colorAccent">@color/purple</color>
+    <color name="purpleDark">#1A237E</color>
 </resources>

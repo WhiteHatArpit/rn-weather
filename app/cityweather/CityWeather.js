@@ -38,12 +38,13 @@ class CityWeather extends Component {
     super(props);
     console.log("CityWeather.props");
     console.log(props);
+
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       city: 'Bangalore',
       isLoading: false,
       message: '',
-      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+      dataSource: ds.cloneWithRows([]),
     };
   }
 

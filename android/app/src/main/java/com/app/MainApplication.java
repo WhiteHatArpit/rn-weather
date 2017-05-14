@@ -8,41 +8,40 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
-  private static MainApplication sInstance;
+    private static MainApplication sInstance;
+    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 
-  public static MainApplication getInstance() {
-      return sInstance;
-  }
+        @Override
+        public boolean getUseDeveloperSupport() {
+            return BuildConfig.DEBUG;
+        }
 
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    sInstance = this;
-    SoLoader.init(this, /* native exopackage */ false);
-  }
+        @Override
+        protected List<ReactPackage> getPackages() {
+            return Collections.<ReactPackage>singletonList(
+                    new MainReactPackage()
+            );
+        }
+    };
 
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-
-    @Override
-    public boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
+    public static MainApplication getInstance() {
+        return sInstance;
     }
 
     @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
-      );
+    public void onCreate() {
+        super.onCreate();
+        sInstance = this;
+        SoLoader.init(this, /* native exopackage */ false);
     }
-  };
 
-  @Override
-  public ReactNativeHost getReactNativeHost() {
-    return mReactNativeHost;
-  }
+    @Override
+    public ReactNativeHost getReactNativeHost() {
+        return mReactNativeHost;
+    }
 }

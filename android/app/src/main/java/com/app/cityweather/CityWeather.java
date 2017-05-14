@@ -1,4 +1,4 @@
-package com.app;
+package com.app.cityweather;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,6 +8,8 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 
+import com.app.BuildConfig;
+import com.app.Utils;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
@@ -33,7 +35,7 @@ public class CityWeather extends AppCompatActivity
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
-        reactRootView.startReactApplication(mReactInstanceManager, "CityWeather", null);
+        reactRootView.startReactApplication(mReactInstanceManager, "CityWeather", getIntent().getExtras());
 
         setContentView(reactRootView);
 

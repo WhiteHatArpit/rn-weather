@@ -3,6 +3,8 @@ package com.app;
 import android.content.Context;
 import android.content.Intent;
 
+import com.app.cityweather.CityWeather;
+
 /**
  * Created by arpitgupta on 13/05/17.
  * Collection of app routes.

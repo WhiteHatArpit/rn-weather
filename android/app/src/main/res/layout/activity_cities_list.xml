@@ -19,7 +19,7 @@
             android:layout_gravity="end"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:background="@drawable/selector_purple_border"
+            android:background="@drawable/selector_white"
             android:gravity="center"
             android:minWidth="80dp"
             android:padding="8dp"
@@ -28,6 +28,15 @@
             tools:text="GRID" />
 
     </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="Select a city:"
+        android:textColor="#656565"
+        android:textSize="18sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

@@ -46,7 +46,7 @@ var styles = StyleSheet.create({
   },
   date: {
     fontSize: 20,
-    color: '#656565'
+    color: '#000000'
   },
   chevron: {
     fontSize: 36,
