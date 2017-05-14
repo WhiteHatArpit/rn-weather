@@ -12,12 +12,12 @@ var ItemDetail = require('./ItemDetail');
 
 class DayWeather extends React.Component {
 
-  static navigationOptions = ({ navigation }) => ({
-    title: `${navigation.state.params.data.date}`,
-  });
+  constructor(props) {
+    super(props);
+  }
 
   render() {
-    const data = this.props.navigation.state.params.data;
+    const data = this.props.data;
     var icon = data.weatherIconUrl ?
     (<Image style={styles.thumb} source={{ uri: data.weatherIconUrl[0].value }} />) :
     (<View/>);

@@ -22,12 +22,11 @@ Navigation.startSingleScreenApp({
 	screen: {
 		screen: 'CityWeather',
 		title: 'Bangalore',
-		navigatorStyle,
+		navigatorStyle: navigatorStyle,
     leftButtons: [
 			{
 				id: 'back'
 			}
 		]
-	},
-  passProps: {}
+	}
 });

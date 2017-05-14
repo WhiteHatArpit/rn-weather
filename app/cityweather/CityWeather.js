@@ -13,6 +13,15 @@ import {
 var styles = require('./Styles');
 var DayWeather = require('../dayweather/DayWeather');
 
+const navigatorStyle = {
+	statusBarColor: '#1A237E',
+	statusBarTextColorScheme: 'light',
+	navBarBackgroundColor: '#3F51B5',
+	navBarTextColor: '#FFFFFF',
+  navBarButtonColor: '#FFFFFF',
+  topBarElevationShadowEnabled: false
+};
+
 function urlForQueryAndPage(city: string, page: number) {
   var data = {
       q: city,
@@ -42,6 +51,19 @@ class CityWeather extends Component {
       message: '',
       dataSource: ds.cloneWithRows([]),
     };
+
+    this.props.navigator.setOnNavigatorEvent(this._onNavigatorEvent.bind(this));
+  }
+
+  _onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+			if (event.id === 'back') {
+				this.props.navigator.pop({
+          animated: true
+        });
+			}
+		}
+    console.log(event);
   }
 
   componentDidMount() {
@@ -81,14 +103,13 @@ class CityWeather extends Component {
   }
 
   _onDateSelect(rowData) {
-    this.props.navigator.push({
+    this.props.navigator.showModal({
       screen: 'DayWeather',
       title: rowData.date,
+      navigatorStyle: navigatorStyle,
       passProps: {data: rowData},
       animated: true
     });
-    // const { navigate } = this.props.navigation;
-    // navigate('DayWeather', { data: rowData});
   }
 
   renderRow(rowData, sectionID, rowID) {
@@ -124,6 +145,7 @@ class CityWeather extends Component {
     var weatherlist = this.state.isLoading ?
     (<View/>) :
     (<ListView
+        enableEmptySections={true}
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}/>
     );
