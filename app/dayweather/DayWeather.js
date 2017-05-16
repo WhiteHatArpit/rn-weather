@@ -12,12 +12,21 @@ var ItemDetail = require('./ItemDetail');
 
 class DayWeather extends React.Component {
 
+  static navigationOptions = ({ navigation }) => ({
+    title: `${navigation.state.params.data.date}`,
+    headerTintColor: '#FFFFFF',
+    headerStyle: { backgroundColor: '#3F51B5', elevation: 0 }
+  });
+
   constructor(props) {
     super(props);
-  }
+    // console.log("DayWeather.props");
+    // console.log(props);
+}
 
   render() {
-    const data = this.props.data;
+    const { params } = this.props.navigation.state;
+    const data = params.data;
     var icon = data.weatherIconUrl ?
     (<Image style={styles.thumb} source={{ uri: data.weatherIconUrl[0].value }} />) :
     (<View/>);
