@@ -12,12 +12,11 @@ import com.app.cityweather.CityWeather;
 public class NavigationUtils {
 
     public static void
-    routeToCityWeather(Context context, String cityKey, String cityName) {
+    routeToCityWeather(Context context, String cityName) {
         if (context == null) {
             return;
         }
         Intent i = new Intent(context, CityWeather.class);
-        i.putExtra("city_key", cityKey);
         i.putExtra("city_name", cityName);
         context.startActivity(i);
     }

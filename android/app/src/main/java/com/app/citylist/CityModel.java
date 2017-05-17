@@ -1,17 +1,11 @@
 package com.app.citylist;
 
+import com.google.gson.annotations.SerializedName;
+
 class CityModel {
 
-    private String key;
+    @SerializedName("name")
     private String name;
-
-    String getKey() {
-        return key;
-    }
-
-    void setKey(String key) {
-        this.key = key;
-    }
 
     String getName() {
         return name;

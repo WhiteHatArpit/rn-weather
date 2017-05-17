@@ -1,0 +1,34 @@
+{
+  "cities": [
+    {
+      "name": "Ahmedabad"
+    },
+    {
+      "name": "Bengaluru"
+    },
+    {
+      "name": "Chandigarh"
+    },
+    {
+      "name": "Chennai"
+    },
+    {
+      "name": "Hyderabad"
+    },
+    {
+      "name": "Kolkata"
+    },
+    {
+      "name": "Mumbai"
+    },
+    {
+      "name": "New Delhi"
+    },
+    {
+      "name": "Noida"
+    },
+    {
+      "name": "Pune"
+    }
+  ]
+}

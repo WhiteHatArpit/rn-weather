@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.app.NavigationUtils;
 import com.app.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,32 +44,7 @@ public class CityListActivity extends AppCompatActivity
     }
 
     private void getData() {
-        mCities = new ArrayList<>();
-
-        CityModel city1 = new CityModel();
-        city1.setKey("1");
-        city1.setName("Chennai");
-        mCities.add(city1);
-
-        CityModel city2 = new CityModel();
-        city2.setKey("2");
-        city2.setName("Delhi");
-        mCities.add(city2);
-
-        CityModel city3 = new CityModel();
-        city3.setKey("3");
-        city3.setName("Kolkata");
-        mCities.add(city3);
-
-        CityModel city4 = new CityModel();
-        city4.setKey("4");
-        city4.setName("Mumbai");
-        mCities.add(city4);
-
-        CityModel city5 = new CityModel();
-        city5.setKey("5");
-        city5.setName("Noida");
-        mCities.add(city5);
+        mCities = CityDataHelper.getData(this);
     }
 
     public void populateUI() {
@@ -104,6 +78,6 @@ public class CityListActivity extends AppCompatActivity
     @Override
     public void onItemClick(int position) {
         CityModel city = mCities.get(position);
-        NavigationUtils.routeToCityWeather(mContext, city.getKey(), city.getName());
+        NavigationUtils.routeToCityWeather(mContext, city.getName());
     }
 }
