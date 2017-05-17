@@ -9,6 +9,7 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
+import Moment from 'moment';
 
 var styles = require('./Styles');
 var DayWeather = require('../dayweather/DayWeather');
@@ -104,9 +105,8 @@ class CityWeather extends Component {
             {icon}
             <View  style={styles.textContainer}>
               <Text style={styles.temp}>{rowData.tempMinC}&#8451; - {rowData.tempMaxC}&#8451;</Text>
-              <Text style={styles.date}>{rowData.date}</Text>
+              <Text style={styles.date}>{Moment(rowData.date, 'YYYY-MM-DD').format('DD MMM')}</Text>
             </View>
-            <Text style={styles.chevron}>></Text>
           </View>
           <View style={styles.separator}/>
         </View>

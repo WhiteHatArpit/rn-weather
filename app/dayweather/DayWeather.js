@@ -3,9 +3,11 @@
 import React, { Component } from 'react'
 import {
   Image,
-  View,
-  Text
+  Text,
+  ScrollView,
+  View
 } from 'react-native';
+import Moment from 'moment';
 
 var styles = require('./Styles');
 var ItemDetail = require('./ItemDetail');
@@ -13,7 +15,7 @@ var ItemDetail = require('./ItemDetail');
 class DayWeather extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
-    title: `${navigation.state.params.data.date}`,
+    title: `${Moment(navigation.state.params.data.date, 'YYYY-MM-DD').format('DD MMM')}`,
     headerTintColor: '#FFFFFF',
     headerStyle: { backgroundColor: '#3F51B5', elevation: 0 }
   });
@@ -31,21 +33,23 @@ class DayWeather extends React.Component {
     (<Image style={styles.thumb} source={{ uri: data.weatherIconUrl[0].value }} />) :
     (<View/>);
     return (
-      <View style={styles.container}>
-        <View style={styles.headContainer}>
-          <View style={{flex: 1}}>
-            <Text style={styles.headText}>{data.tempMinC}&#8451; - {data.tempMaxC}&#8451;</Text>
-            <Text style={styles.descText}>{data.weatherDesc[0].value}</Text>
+      <ScrollView style={styles.scrollContainer}>
+        <View style={styles.container}>
+          <View style={styles.headContainer}>
+            <View style={{flex: 1}}>
+              <Text style={styles.headText}>{data.tempMinC}&#8451; - {data.tempMaxC}&#8451;</Text>
+              <Text style={styles.descText}>{data.weatherDesc[0].value}</Text>
+            </View>
+            {icon}
           </View>
-          {icon}
+          <View style={styles.detailsContainer}>
+            <Text style={styles.detailsText}>Wind:</Text>
+            <ItemDetail label='Speed (kmph)' value={data.windspeedKmph}/>
+            <ItemDetail label='Direction' value={data.winddirection}/>
+            <ItemDetail label='Dir Degree' value={data.winddirDegree}/>
+          </View>
         </View>
-        <View style={styles.detailsContainer}>
-          <Text style={styles.detailsText}>Wind:</Text>
-          <ItemDetail label='Speed (kmph)' value={data.windspeedKmph}/>
-          <ItemDetail label='Direction' value={data.winddirection}/>
-          <ItemDetail label='Dir Degree' value={data.winddirDegree}/>
-        </View>
-      </View>
+      </ScrollView>
     );
   }
 }

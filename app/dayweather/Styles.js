@@ -3,6 +3,10 @@ import {
 } from 'react-native';
 
 var styles = StyleSheet.create({
+  scrollContainer: {
+    flex: 1,
+    backgroundColor: '#FFFFFF'
+  },
   container: {
     flex: 1,
     flexDirection: 'column',
